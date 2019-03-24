@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GPS : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class GPS : MonoBehaviour
     [SerializeField] float latitude;
     [SerializeField] float longitude;
 
+    public Text alt;
+    public Text Long;
+    
 
     private void Awake()
     {
@@ -23,6 +27,12 @@ public class GPS : MonoBehaviour
     private void Start()
     {
         StartCoroutine(startGPS());
+    }
+
+    private void Update()
+    {
+        alt.text = latitude.ToString();
+        Long.text = longitude.ToString();
     }
 
     private IEnumerator startGPS()
